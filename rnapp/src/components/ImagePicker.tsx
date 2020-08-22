@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, Image, View} from 'react-native';
 import {Button} from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
+import {useMst} from './../store';
 
 const ImagePickerView = () => {
   const [state, setState] = useState({src: {} as any});
+  const store = useMst();
+
+  useEffect(() => {
+    console.log('set uri', state.src.uri);
+    store.setUri(state.src.uri);
+  }, [state]);
 
   // More info on all the options is below in the API Reference... just some common use cases shown here
   const options = {
