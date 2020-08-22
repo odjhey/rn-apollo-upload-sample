@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import {ScrollView, View, Image, ToastAndroid} from 'react-native';
 import {PermissionsAndroid, Platform} from 'react-native';
-import {Text, Card, Button} from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import CameraRoll from '@react-native-community/cameraroll';
 import ImagePickerView from './src/components/ImagePicker';
 import StoreComponent from './src/components/StoreTestComponent';
+import Header from './src/components/Header';
 
 async function hasAndroidPermission() {
   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
@@ -54,9 +55,7 @@ const App = () => {
   return (
     <StoreComponent>
       <View style={{flex: 1}}>
-        <Card>
-          <Text>Hello World!</Text>
-        </Card>
+        <Header></Header>
         <ScrollView>
           <View>
             <ImagePickerView></ImagePickerView>
