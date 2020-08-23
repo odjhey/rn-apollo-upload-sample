@@ -4,6 +4,7 @@ const RootStore = types
   .model({
     count: 0,
     uri: types.optional(types.string, ''),
+    signUri: types.optional(types.string, ''),
   })
   .actions((self) => ({
     inc() {
@@ -11,6 +12,9 @@ const RootStore = types
     },
     setUri: (newUri) => {
       self.uri = newUri;
+    },
+    setSignUri: (newUri) => {
+      self.signUri = newUri;
     },
   }))
   .views((self) => ({

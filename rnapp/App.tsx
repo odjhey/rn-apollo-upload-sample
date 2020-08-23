@@ -6,6 +6,7 @@ import CameraRoll from '@react-native-community/cameraroll';
 import ImagePickerView from './src/components/ImagePicker';
 import StoreComponent from './src/components/StoreTestComponent';
 import Header from './src/components/Header';
+import Signature from './src/components/Signature';
 
 async function hasAndroidPermission() {
   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
@@ -55,36 +56,41 @@ const App = () => {
   return (
     <StoreComponent>
       <View style={{flex: 1}}>
-        <Header></Header>
-        <ScrollView>
-          <View>
-            <ImagePickerView></ImagePickerView>
-          </View>
-          <View>
-            <Button
-              title="Load Images"
-              onPress={() => {
-                _handleButtonPress();
-              }}
-            />
-            <View style={{maxHeight: 300}}>
-              <ScrollView nestedScrollEnabled={true}>
-                {state.photos.map((p: any, i) => {
-                  return (
-                    <Image
-                      key={i}
-                      style={{
-                        width: 300,
-                        height: 100,
-                      }}
-                      source={{uri: p.node.image.uri}}
-                    />
-                  );
-                })}
-              </ScrollView>
+        <View style={{flex: 2}}>
+          <Header></Header>
+          <Signature></Signature>
+        </View>
+        <View style={{flex: 1}}>
+          <ScrollView>
+            <View>
+              <ImagePickerView></ImagePickerView>
             </View>
-          </View>
-        </ScrollView>
+            <View>
+              <Button
+                title="Load Images"
+                onPress={() => {
+                  _handleButtonPress();
+                }}
+              />
+              <View style={{maxHeight: 300}}>
+                <ScrollView nestedScrollEnabled={true}>
+                  {state.photos.map((p: any, i) => {
+                    return (
+                      <Image
+                        key={i}
+                        style={{
+                          width: 300,
+                          height: 100,
+                        }}
+                        source={{uri: p.node.image.uri}}
+                      />
+                    );
+                  })}
+                </ScrollView>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
       </View>
     </StoreComponent>
   );

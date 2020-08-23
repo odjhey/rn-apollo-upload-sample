@@ -51,6 +51,7 @@ const Header = observer(() => {
         <Fragment>
           <Text>Hello World!</Text>
           <Text>uri: {store.uri}</Text>
+          <Text>sign: {store.signUri}</Text>
         </Fragment>
       }>
       <Button
